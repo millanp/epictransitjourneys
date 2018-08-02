@@ -12,3 +12,4 @@ pylint = "<2.0.0"
 [packages]
 django = "*"
 django-heroku = "*"
+gunicorn = "*"
