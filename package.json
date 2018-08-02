@@ -2,7 +2,7 @@
     "name": "epictransitjourneys",
     "version": "0.0.0",
     "scripts": {
-      "postinstall": "cd frontend && npm install && ng build"
+      "postinstall": "cd frontend && npm install"
     },
     "private": true
   }
