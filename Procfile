@@ -1,0 +1,1 @@
+web: gunicorn epictransitjourneys.wsgi --log-file -
