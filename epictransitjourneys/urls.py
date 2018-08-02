@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.contrib import staticfiles
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', staticfiles.views.serve, kwargs={'path': 'index.html'})
 ]

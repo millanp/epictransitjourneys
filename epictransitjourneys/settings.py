@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'backend'
 ]
 
 MIDDLEWARE = [
@@ -118,6 +119,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+ANGULAR_APP_DIR = os.path.join(BASE_DIR, 'frontend/dist')
+STATICFILES_DIRS = [
+    os.path.join(ANGULAR_APP_DIR)
+]
 
 # Configure Django App for Heroku
 import django_heroku
