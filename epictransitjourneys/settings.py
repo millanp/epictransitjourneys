@@ -120,7 +120,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-ANGULAR_APP_DIR = os.path.join(BASE_DIR, 'frontend/dist')
+ANGULAR_APP_DIR = os.path.join(BASE_DIR, 'frontend/dist/frontend')
 STATICFILES_DIRS = [
     os.path.join(ANGULAR_APP_DIR)
 ]

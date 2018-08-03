@@ -19,5 +19,5 @@ from django.contrib.staticfiles.views import serve
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', serve, kwargs={'path': 'frontend/index.html'})
+    path('', serve, kwargs={'path': 'index.html'})
 ]
