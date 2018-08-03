@@ -5,5 +5,5 @@
       "postinstall": "cd frontend && npm install"
     },
     "private": true
-  }
+}
   

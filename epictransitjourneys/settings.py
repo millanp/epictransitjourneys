@@ -52,10 +52,15 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'epictransitjourneys.urls'
 
+# Important for the configuration of the angular app
+ANGULAR_APP_DIR = os.path.join(BASE_DIR, 'frontend/dist/frontend')
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            ANGULAR_APP_DIR
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -120,7 +125,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-ANGULAR_APP_DIR = os.path.join(BASE_DIR, 'frontend/dist/frontend')
 STATICFILES_DIRS = [
     os.path.join(ANGULAR_APP_DIR)
 ]

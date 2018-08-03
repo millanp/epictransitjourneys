@@ -14,10 +14,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from django.contrib.staticfiles.views import serve
+from django.urls import path, re_path
+from django.views.generic import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', serve, kwargs={'path': 'index.html'})
+    # catch all other urls, let Angular routing handle it
+    re_path(r'^.*$', TemplateView.as_view(template_name="index.html")) 
 ]
