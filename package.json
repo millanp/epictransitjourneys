@@ -4,5 +4,6 @@
   "scripts": {
     "postinstall": "cd frontend && npm install"
   },
-  "private": true
+  "private": true,
+  "dependencies": {}
 }
