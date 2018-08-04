@@ -4,7 +4,7 @@ import os
 os.system('npm install')
 
 # Simulate Heroku Python buildpack (all pip dependencies are already installed)
-os.system('python manage.py collectstatic --no-input')
+os.system('heroku local:run python manage.py collectstatic --no-input')
 
 # Run the Procfile locally
 os.system('heroku local')

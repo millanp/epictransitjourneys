@@ -20,12 +20,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 't1hzt7ow1=+!55ye*d6nmsb636v=-wgxe0+!hm)=ct#elv0)31'
+# SECRET_KEY will be set by heroku_config at the end of the file
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [] # This will be set by heroku_config at the end of the file
 
 
 # Application definition
@@ -59,7 +59,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            ANGULAR_APP_DIR
+            ANGULAR_APP_DIR # This tells Django where to look for Angular's index.html
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -80,10 +80,7 @@ WSGI_APPLICATION = 'epictransitjourneys.wsgi.application'
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    # This is set at the end of the file by django_heroku
 }
 
 
