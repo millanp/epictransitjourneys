@@ -120,7 +120,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-# STATIC_URL = '/b/'
+# STATIC_URL = '/b/' # NOTE: This is set by django_heroku. If I want to set this to '/', i'll need to override it.
 
 STATICFILES_DIRS = [
     os.path.join(ANGULAR_APP_DIR)
