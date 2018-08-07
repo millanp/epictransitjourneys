@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { navRoutes } from './app-routing.module';
+import { routes } from './app-routing.module';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +8,6 @@ import { navRoutes } from './app-routing.module';
 })
 export class AppComponent {
   title = 'frontend';
-  navRoutes = navRoutes;
+  navRoutes = routes;
   monkeys: number[] = [1,2,3,4,5,6];
 }
