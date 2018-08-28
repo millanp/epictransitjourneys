@@ -1,4 +1,4 @@
-import { Route } from "@angular/router";
+import { Route, Routes } from "@angular/router";
 
 export interface NavRoute extends Route {
     data: {
@@ -7,3 +7,7 @@ export interface NavRoute extends Route {
 }
 
 export type NavRoutes = NavRoute[];
+
+export function navRoutesOnly(routes: Routes): NavRoutes {
+    return routes.filter(route => ('data' in route && 'navName' in route.data)) as NavRoutes;
+}

@@ -19,6 +19,7 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('admin', admin.site.urls),
     path('o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
     # catch all other urls, let Angular routing handle it
     re_path(r'^.*$', TemplateView.as_view(template_name="index.html")) 

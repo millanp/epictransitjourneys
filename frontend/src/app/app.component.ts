@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { routes } from './app-routing.module';
+import { navRoutesOnly } from './nav-routes';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,5 @@ import { routes } from './app-routing.module';
 })
 export class AppComponent {
   title = 'frontend';
-  navRoutes = routes;
-  monkeys: number[] = [1,2,3,4,5,6];
+  navRoutes = navRoutesOnly(routes);
 }

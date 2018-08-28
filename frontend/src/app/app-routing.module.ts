@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from "@angular/router";
 import { HomeComponent } from "./home/home.component";
-import { NavRoutes } from './nav-routes';
 import { JourneyListComponent } from './journey-list/journey-list.component';
+import { LoginComponent } from './login/login.component';
 
-export const routes: NavRoutes = [
+export const routes: Routes = [
   {path: '', component: HomeComponent, pathMatch: 'full', data: {navName: "Home"}},
-  {path: 'journeys', component: JourneyListComponent, data: {navName: "Journey List"}}
+  {path: 'journeys', component: JourneyListComponent, data: {navName: "Journey List"}},
+  {path: 'login', component: LoginComponent}
 ]
 
 @NgModule({
