@@ -18,9 +18,13 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <a *ngIf="authService.loggedIn()" routerLink='/login'>
+          <a *ngIf="!authService.loggedIn()" routerLink='/login'>
             <span class="glyphicon glyphicon-log-in"></span>
             Login
+          </a>
+          <a *ngIf="authService.loggedIn()" (click)="logout()">
+            <span class="glyphicon glyphicon-log-out"></span>
+            Logout
           </a>
         </li>
       </ul>
