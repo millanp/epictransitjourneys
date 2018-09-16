@@ -18,7 +18,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <a routerLink='/login'>
+          <a *ngIf="authService.loggedIn()" routerLink='/login'>
             <span class="glyphicon glyphicon-log-in"></span>
             Login
           </a>

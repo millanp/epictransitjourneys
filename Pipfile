@@ -8,6 +8,7 @@ python_version = "3.5"
 
 [dev-packages]
 pylint = "<2.0.0"
+"autopep8" = "*"
 
 [packages]
 django = "*"

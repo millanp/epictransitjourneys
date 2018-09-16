@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from "../authentication.service";
+import { Observable } from 'rxjs';
+import { AuthResponse } from '../oauth-response';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -7,13 +11,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  private username: string;
+  private password: string;
+
+  constructor(private authService: AuthenticationService, private router: Router) { }
 
   ngOnInit() {
   }
 
   onSubmit() {
-    
+    let loginPromise: Observable<AuthResponse> = this.authService.login(this.username, this.password);
+    loginPromise.subscribe(() => {
+      this.router.navigate(['my-account']);
+    });
   }
 
 }
