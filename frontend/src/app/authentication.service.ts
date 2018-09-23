@@ -41,10 +41,12 @@ export class AuthenticationService {
 
   logout() { // TODO: Fix the CSRF thing with revoke_token
     const httpOptions = {
-      // headers: new HttpHeaders({
-      //   "Content-Type": "application/x-www-form-urlencoded",
-      //   "Authorization": "Basic " + btoa(this.CLIENT_ID + ":")
-      // })
+      headers: new HttpHeaders({
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Authorization": "Basic " + btoa(this.CLIENT_ID + ":"),
+        "WWW-Authenticate": "Basic"
+      }),
+      withCredentials: true
     };
     this.syncFromStorage();
     const httpParams = new HttpParams()

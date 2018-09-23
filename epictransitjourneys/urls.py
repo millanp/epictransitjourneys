@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, re_path, include
 from django.views.generic import TemplateView
+from django.views.decorators.csrf import ensure_csrf_cookie
 from backend import urls as backendurls
 
 urlpatterns = [
@@ -24,5 +25,5 @@ urlpatterns = [
     path('o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
     path('api/', include(backendurls)),
     # catch all other urls, let Angular routing handle it
-    re_path(r'^.*$', TemplateView.as_view(template_name="index.html")) 
+    re_path(r'^.*$', ensure_csrf_cookie(TemplateView.as_view(template_name="index.html"))) 
 ]
