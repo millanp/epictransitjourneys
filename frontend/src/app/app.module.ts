@@ -11,6 +11,8 @@ import { JourneyListComponent } from './journey-list/journey-list.component';
 import { LoginComponent } from './login/login.component';
 import { MyAccountComponent } from './my-account/my-account.component';
 
+import { CookieService } from "ngx-cookie-service";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +28,7 @@ import { MyAccountComponent } from './my-account/my-account.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

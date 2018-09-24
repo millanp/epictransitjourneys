@@ -1,9 +1,11 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
-import { Observable, Subscription } from "rxjs";
-import { tap } from "rxjs/operators";
+import { Observable } from "rxjs";
 import * as moment from "moment";
 import { AuthResponse } from "./oauth-response";
+import { CookieService } from "ngx-cookie-service";
+import { Router } from "@angular/router";
+
 
 @Injectable({
   providedIn: "root"
@@ -11,7 +13,7 @@ import { AuthResponse } from "./oauth-response";
 export class AuthenticationService {
 
   private LOGIN_URL: string = "/o/token/";
-  private LOGOUT_URL: string = "/o/revoke_token";
+  private LOGOUT_URL: string = "/o/revoke_token/";
 
   private CLIENT_ID: string = "pvgEWnLsB1GGP0qAvIPN2OrkamQUKj5h16UH8iXp"; // Not secret
 
@@ -19,7 +21,7 @@ export class AuthenticationService {
   private refreshToken: string;
   private expiresAt: number;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private cookieService: CookieService, private router: Router) { }
 
   // TODO: plug Angular into django authentication system
 
@@ -44,19 +46,18 @@ export class AuthenticationService {
       headers: new HttpHeaders({
         "Content-Type": "application/x-www-form-urlencoded",
         "Authorization": "Basic " + btoa(this.CLIENT_ID + ":"),
-        "WWW-Authenticate": "Basic"
+        "WWW-Authenticate": "Basic",
+        "X-CSRFToken": this.cookieService.get('csrftoken')
       }),
       withCredentials: true
     };
-    this.syncFromStorage();
     const httpParams = new HttpParams()
       .set('token', this.accessToken)
       .set('client_id', this.CLIENT_ID);
+    this.resetStorage();
+    this.syncFromStorage();
+    this.router.navigate(['.']);
     let authResult: Observable<any> = this.http.post(this.LOGOUT_URL, httpParams.toString(), httpOptions);
-    authResult.subscribe(() => {
-      this.resetStorage();
-      this.syncFromStorage();
-    }); // TODO: Check if the response indicates success
     return authResult;
   }
 
