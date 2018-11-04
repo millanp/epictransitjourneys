@@ -15,4 +15,4 @@ django = "*"
 django-heroku = "*"
 gunicorn = "*"
 djangorestframework = "*"
-django-oauth-toolkit = "*"
+django-rest-auth = {extras = ["with_social"], version = "*"}

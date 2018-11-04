@@ -12,8 +12,8 @@ import { Router } from "@angular/router";
 })
 export class AuthenticationService {
 
-  private LOGIN_URL: string = "/o/token/";
-  private LOGOUT_URL: string = "/o/revoke_token/";
+  private LOGIN_URL: string = "/rest-auth/login/";
+  private LOGOUT_URL: string = "/rest-auth/logout/";
 
   private CLIENT_ID: string = "pvgEWnLsB1GGP0qAvIPN2OrkamQUKj5h16UH8iXp"; // Not secret
 
@@ -26,31 +26,31 @@ export class AuthenticationService {
   // TODO: plug Angular into django authentication system
 
   login(username: string, password: string): Observable<AuthResponse> {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        "Content-Type": "application/x-www-form-urlencoded",
-        "Authorization": "Basic " + btoa(this.CLIENT_ID + ":")
-      })
-    };
+    // const httpOptions = {
+    //   headers: new HttpHeaders({
+    //     "Content-Type": "application/x-www-form-urlencoded",
+    //     "Authorization": "Basic " + btoa(this.CLIENT_ID + ":")
+    //   })
+    // };
     const httpParams = new HttpParams()
-      .set('grant_type', 'password')
+      // .set('grant_type', 'password')
       .set('username', username)
       .set('password', password);
-    let authResult: Observable<AuthResponse> = this.http.post<AuthResponse>(this.LOGIN_URL, httpParams.toString(), httpOptions);
+    let authResult: Observable<AuthResponse> = this.http.post<AuthResponse>(this.LOGIN_URL, httpParams.toString()/*, httpOptions*/);
     authResult.subscribe(this.activateSession);
     return authResult;
   }
 
   logout() { // TODO: Fix the CSRF thing with revoke_token
-    const httpOptions = {
-      headers: new HttpHeaders({
-        "Content-Type": "application/x-www-form-urlencoded",
-        "Authorization": "Basic " + btoa(this.CLIENT_ID + ":"),
-        "WWW-Authenticate": "Basic",
-        "X-CSRFToken": this.cookieService.get('csrftoken')
-      }),
-      withCredentials: true
-    };
+    // const httpOptions = {
+    //   headers: new HttpHeaders({
+    //     "Content-Type": "application/x-www-form-urlencoded",
+    //     "Authorization": "Basic " + btoa(this.CLIENT_ID + ":"),
+    //     "WWW-Authenticate": "Basic",
+    //     "X-CSRFToken": this.cookieService.get('csrftoken')
+    //   }),
+    //   withCredentials: true
+    // };
     const httpParams = new HttpParams()
       .set('token', this.accessToken)
       .set('client_id', this.CLIENT_ID);

@@ -22,8 +22,9 @@ from backend import urls as backendurls
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('admin', admin.site.urls),
-    path('o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
     path('api/', include(backendurls)),
+    path('rest-auth/', include('rest_auth.urls')),
+    path('rest-auth/registration/', include('rest_auth.registration.urls')),
     # catch all other urls, let Angular routing handle it
     re_path(r'^.*$', ensure_csrf_cookie(TemplateView.as_view(template_name="index.html"))) 
 ]
