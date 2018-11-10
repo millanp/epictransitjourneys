@@ -3,7 +3,7 @@ from .models import Journey, JourneySerializer
 
 from rest_framework import generics, permissions, serializers
 
-from oauth2_provider.contrib.rest_framework import TokenHasReadWriteScope
+# from oauth2_provider.contrib.rest_framework import TokenHasReadWriteScope
 
 # Create your views here.
 class JourneyList(generics.ListAPIView):
@@ -12,7 +12,7 @@ class JourneyList(generics.ListAPIView):
     serializer_class = JourneySerializer
 
 class JourneyCreate(generics.CreateAPIView):
-    permission_classes = [TokenHasReadWriteScope]
+    # permission_classes = [TokenHasReadWriteScope]
     serializer_class = JourneySerializer
 
 # clid: pvgEWnLsB1GGP0qAvIPN2OrkamQUKj5h16UH8iXp

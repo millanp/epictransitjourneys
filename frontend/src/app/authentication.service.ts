@@ -26,38 +26,38 @@ export class AuthenticationService {
   // TODO: plug Angular into django authentication system
 
   login(username: string, password: string): Observable<AuthResponse> {
-    // const httpOptions = {
-    //   headers: new HttpHeaders({
-    //     "Content-Type": "application/x-www-form-urlencoded",
-    //     "Authorization": "Basic " + btoa(this.CLIENT_ID + ":")
-    //   })
-    // };
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Authorization": "Basic " + btoa(this.CLIENT_ID + ":")
+      })
+    };
     const httpParams = new HttpParams()
       // .set('grant_type', 'password')
       .set('username', username)
       .set('password', password);
-    let authResult: Observable<AuthResponse> = this.http.post<AuthResponse>(this.LOGIN_URL, httpParams.toString()/*, httpOptions*/);
+    let authResult: Observable<AuthResponse> = this.http.post<AuthResponse>(this.LOGIN_URL, httpParams.toString(), httpOptions);
     authResult.subscribe(this.activateSession);
     return authResult;
   }
 
   logout() { // TODO: Fix the CSRF thing with revoke_token
-    // const httpOptions = {
-    //   headers: new HttpHeaders({
-    //     "Content-Type": "application/x-www-form-urlencoded",
-    //     "Authorization": "Basic " + btoa(this.CLIENT_ID + ":"),
-    //     "WWW-Authenticate": "Basic",
-    //     "X-CSRFToken": this.cookieService.get('csrftoken')
-    //   }),
-    //   withCredentials: true
-    // };
-    const httpParams = new HttpParams()
-      .set('token', this.accessToken)
-      .set('client_id', this.CLIENT_ID);
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Authorization": "Basic " + btoa(this.CLIENT_ID + ":"),
+        "WWW-Authenticate": "Basic",
+        "X-CSRFToken": this.cookieService.get('csrftoken')
+      }),
+      withCredentials: true
+    };
+    // const httpParams = new HttpParams()
+    //   .set('token', this.accessToken)
+    //   .set('client_id', this.CLIENT_ID);
     this.resetStorage();
     this.syncFromStorage();
     this.router.navigate(['.']);
-    let authResult: Observable<any> = this.http.post(this.LOGOUT_URL, httpParams.toString(), httpOptions);
+    let authResult: Observable<any> = this.http.post(this.LOGOUT_URL, new HttpParams(), httpOptions);
     return authResult;
   }
 
