@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { JourneyService } from '../journey.service';
+import { JourneysResponse } from '../response-types';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  private journeys: JourneysResponse;
+
+  constructor(private journeyService: JourneyService) { }
 
   ngOnInit() {
+    this.journeyService.getJourneys().subscribe((journeysRes: JourneysResponse) => {
+      console.log(journeysRes);
+      this.journeys = journeysRes;
+    })
   }
+
+
 
 }

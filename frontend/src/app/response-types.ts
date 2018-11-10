@@ -5,3 +5,7 @@ export interface AuthResponse {
     access_token: string;
     scope: string;
 }
+
+export interface JourneysResponse {
+    [index: number]: {name: string};
+}

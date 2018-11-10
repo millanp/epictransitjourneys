@@ -17,6 +17,11 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
+          <li *ngIf="authService.loggedIn()" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+              <a routerLink='/my-account'>
+                My Account
+              </a>
+            </li>
         <li>
           <a *ngIf="!authService.loggedIn()" routerLink='/login'>
             <span class="glyphicon glyphicon-log-in"></span>

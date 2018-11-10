@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from "../authentication.service";
 import { Observable } from 'rxjs';
-import { AuthResponse } from '../oauth-response';
+import { AuthResponse } from '../response-types';
 import { Router } from '@angular/router';
 
 @Component({

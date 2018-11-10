@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { JourneysResponse } from './response-types';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,9 +12,8 @@ export class JourneyService {
 
   constructor(private http: HttpClient) { }
 
-  getJourneys() {
-    // TODO: find out how to serialize the journey list given by server
-    this.http.get<any>(this.JOURNEY_LIST_STRING)
+  getJourneys(): Observable<JourneysResponse> {
+    return this.http.get<JourneysResponse>(this.JOURNEY_LIST_STRING);
   }
 
 }

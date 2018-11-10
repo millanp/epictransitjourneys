@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Observable } from "rxjs";
 import * as moment from "moment";
-import { AuthResponse } from "./oauth-response";
+import { AuthResponse } from "./response-types";
 import { CookieService } from "ngx-cookie-service";
 import { Router } from "@angular/router";
 
