@@ -23,8 +23,6 @@ export class AuthenticationService {
 
   constructor(private http: HttpClient, private cookieService: CookieService, private router: Router) { }
 
-  // TODO: plug Angular into django authentication system
-
   login(username: string, password: string): Observable<AuthResponse> {
     const httpOptions = {
       headers: new HttpHeaders({
