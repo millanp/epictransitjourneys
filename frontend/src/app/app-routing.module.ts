@@ -5,12 +5,14 @@ import { JourneyListComponent } from './journey-list/journey-list.component';
 import { LoginComponent } from './login/login.component';
 import { MyAccountComponent } from './my-account/my-account.component';
 import { AuthGuard } from './auth-guard.service';
+import { NewJourneyComponent } from './new-journey/new-journey.component';
 
 export const routes: Routes = [
   {path: '', component: HomeComponent, pathMatch: 'full', data: {navName: "Home"}},
   {path: 'journeys', component: JourneyListComponent, data: {navName: "Journey List"}},
   {path: 'login', component: LoginComponent},
-  {path: 'my-account', component: MyAccountComponent, canActivate: [AuthGuard] }
+  {path: 'my-account', component: MyAccountComponent, canActivate: [AuthGuard] },
+  {path: 'new-journey', component: NewJourneyComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

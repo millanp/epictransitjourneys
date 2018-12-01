@@ -12,6 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { MyAccountComponent } from './my-account/my-account.component';
 
 import { CookieService } from "ngx-cookie-service";
+import { NewJourneyComponent } from './new-journey/new-journey.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { CookieService } from "ngx-cookie-service";
     JourneyListComponent,
     LoginComponent,
     MyAccountComponent,
+    NewJourneyComponent,
   ],
   imports: [
     BrowserModule,
