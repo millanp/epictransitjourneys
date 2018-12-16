@@ -14,7 +14,7 @@ class Location(models.Model): # add dynamic map feature later
 class Leg(models.Model):
     route_name = models.CharField(max_length=100)
     route_url = models.URLField()
-    start_location = models.ForeignKey(Location, on_delete=models.CASCADE)
+    start_location = models.ForeignKey(Location, on_delete=models.CASCADE, related_name="start_location")
     end_location = models.ForeignKey(Location, on_delete=models.CASCADE)
     start_time = models.CharField(max_length=100)
     end_time = models.CharField(max_length=100)
@@ -26,8 +26,9 @@ class Leg(models.Model):
 
 class Journey(models.Model):
     name = models.CharField(max_length=300)
+    markdown = models.TextField()
     regions_visited = ArrayField(models.CharField(max_length=100), blank=True)
-    legs = models.ManyToManyField(Leg, blank=True)
+    # legs = models.ManyToManyField(Leg, blank=True)
 
     def __str__(self):
         return self.name
@@ -36,4 +37,4 @@ class Journey(models.Model):
 class JourneySerializer(serializers.ModelSerializer):
     class Meta:
         model = Journey
-        fields = ('name',)
+        fields = ('name', 'markdown')

@@ -13,6 +13,7 @@ import { MyAccountComponent } from './my-account/my-account.component';
 
 import { CookieService } from "ngx-cookie-service";
 import { NewJourneyComponent } from './new-journey/new-journey.component';
+import { httpInterceptorProviders } from './http-interceptors';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import { NewJourneyComponent } from './new-journey/new-journey.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [CookieService],
+  providers: [CookieService, httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

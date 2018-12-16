@@ -1,0 +1,20 @@
+<div id="schedule-preview" [innerHTML]="markdownPreview">
+
+</div>
+<div class="panel panel-default">
+  <form class="panel-body" #newJourneyForm="ngForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Journey Name</label>
+      <input [(ngModel)]="name" type="text" class="form-control" name="username" required>
+    </div>
+  
+    <div class="form-group">
+      <label for="schedule">Schedule</label>
+      <textarea [(ngModel)]="schedule" type="text" class="form-control" name="schedule" rows=5 required></textarea>
+    </div>
+  
+    <button type="submit" [disabled]="!newJourneyForm.form.valid" class="btn btn-success">Submit</button>
+    <button type="button" (click)="showPreview()" class="btn btn-info">Preview</button>
+  </form>
+</div>
+  

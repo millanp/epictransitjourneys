@@ -7,5 +7,10 @@ export interface AuthResponse {
 }
 
 export interface JourneysResponse {
-    [index: number]: {name: string};
+    [index: number]: Journey;
+}
+
+export interface Journey {
+    name: string;
+    markdown: string;
 }

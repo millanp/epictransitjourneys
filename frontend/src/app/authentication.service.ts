@@ -15,7 +15,7 @@ export class AuthenticationService {
   private LOGIN_URL: string = "/o/token/";
   private LOGOUT_URL: string = "/o/revoke_token/";
 
-  private CLIENT_ID: string = "pvgEWnLsB1GGP0qAvIPN2OrkamQUKj5h16UH8iXp"; // Not secret
+  public CLIENT_ID: string = "pvgEWnLsB1GGP0qAvIPN2OrkamQUKj5h16UH8iXp"; // Not secret
 
   private accessToken: string;
   private refreshToken: string;
@@ -47,21 +47,34 @@ export class AuthenticationService {
         "WWW-Authenticate": "Basic",
         "X-CSRFToken": this.cookieService.get('csrftoken')
       }),
-      withCredentials: true
+      withCredentials: true,
+      params: {
+        'token': this.accessToken,
+        'client_id': this.CLIENT_ID
+      }
     };
-    const httpParams = new HttpParams()
-      .set('token', this.accessToken)
-      .set('client_id', this.CLIENT_ID);
+    // const httpParams = new HttpParams()
+    //   .set('token', this.accessToken)
+    //   .set('client_id', this.CLIENT_ID);
+    // const httpParams = {
+    //   'token': this.accessToken,
+    //   'client_id': this.CLIENT_ID
+    // }
     this.resetStorage();
     this.syncFromStorage();
     this.router.navigate(['.']);
-    let authResult: Observable<any> = this.http.post(this.LOGOUT_URL, httpParams.toString(), httpOptions);
+    let authResult: Observable<any> = this.http.post(this.LOGOUT_URL, {}, httpOptions);
     return authResult;
   }
 
   loggedIn(): boolean {
     this.syncFromStorage();
     return this.expiresAt > moment().valueOf();
+  }
+
+  getToken(): string {
+    // TODO: make this more comprehensive
+    return localStorage.getItem("access_token");
   }
 
   private syncFromStorage(): void {
