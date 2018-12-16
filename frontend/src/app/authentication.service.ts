@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
-import { Observable } from "rxjs";
+import { Observable, of } from "rxjs";
+import { map } from "rxjs/operators";
 import * as moment from "moment";
 import { AuthResponse } from "./response-types";
 import { CookieService } from "ngx-cookie-service";
@@ -26,53 +27,62 @@ export class AuthenticationService {
   login(username: string, password: string): Observable<AuthResponse> {
     const httpOptions = {
       headers: new HttpHeaders({
-        "Content-Type": "application/x-www-form-urlencoded",
         "Authorization": "Basic " + btoa(this.CLIENT_ID + ":")
       })
     };
-    const httpParams = new HttpParams()
-      .set('grant_type', 'password')
-      .set('username', username)
-      .set('password', password);
-    let authResult: Observable<AuthResponse> = this.http.post<AuthResponse>(this.LOGIN_URL, httpParams.toString(), httpOptions);
+    let authResult: Observable<AuthResponse> = this.http.post<AuthResponse>(this.LOGIN_URL, {
+      grant_type: 'password',
+      username: username,
+      password: password
+    }, httpOptions);
     authResult.subscribe(this.activateSession);
     return authResult;
   }
 
-  logout() { // TODO: Fix the CSRF thing with revoke_token
+  logout() {
     const httpOptions = {
       headers: new HttpHeaders({
         "Authorization": "Basic " + btoa(this.CLIENT_ID + ":"),
-        "X-CSRFToken": this.cookieService.get('csrftoken')
       }),
-      withCredentials: true,
-      params: {
-        'token': this.accessToken,
-        // 'client_id': this.CLIENT_ID
-      }
     };
-    // const httpParams = new HttpParams()
-    //   .set('token', this.accessToken)
-    //   .set('client_id', this.CLIENT_ID);
-    // const httpParams = {
-    //   'token': this.accessToken,
-    //   'client_id': this.CLIENT_ID
-    // }
     this.resetStorage();
     this.syncFromStorage();
     this.router.navigate(['.']);
-    let authResult: Observable<any> = this.http.post(this.LOGOUT_URL, {}, httpOptions);
+    let authResult: Observable<any> = this.http.post(this.LOGOUT_URL, {'token': this.accessToken}, httpOptions);
     return authResult;
   }
 
   loggedIn(): boolean {
     this.syncFromStorage();
-    return this.expiresAt > moment().valueOf();
+    if (this.refreshToken) {
+      return true;
+    }
+    return false
   }
 
-  getToken(): string {
+  getToken(): Observable<string> {
     // TODO: make this more comprehensive
-    return localStorage.getItem("access_token");
+    console.log('called');
+    if (this.expiresAt > moment().valueOf()) {
+      return of(localStorage.getItem("access_token"));
+    }
+    return this.getRefreshedToken().pipe<string>(map((resp: AuthResponse) => {
+      console.log(resp);
+      this.activateSession(resp);
+      return resp.access_token;
+    }))
+  }
+
+  private getRefreshedToken(): Observable<AuthResponse> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "Authorization": "Basic " + btoa(this.CLIENT_ID + ":"),
+      }),
+    };
+    return this.http.post<AuthResponse>(this.LOGIN_URL, {
+      'grant_type': 'refresh_token',
+      'refresh_token': this.refreshToken
+    }, httpOptions);
   }
 
   private syncFromStorage(): void {

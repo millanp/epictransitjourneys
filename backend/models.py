@@ -26,8 +26,8 @@ class Leg(models.Model):
 
 class Journey(models.Model):
     name = models.CharField(max_length=300)
-    markdown = models.TextField()
-    regions_visited = ArrayField(models.CharField(max_length=100), blank=True)
+    markdown = models.TextField(null=True)
+    regions_visited = ArrayField(models.CharField(max_length=100), blank=True, default=[])
     # legs = models.ManyToManyField(Leg, blank=True)
 
     def __str__(self):

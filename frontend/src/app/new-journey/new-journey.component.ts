@@ -22,7 +22,7 @@ export class NewJourneyComponent implements OnInit {
   onSubmit() {
     // submit however i will
     console.log("submitting");
-    this.journeyService.pushJourney({name, markdown: this.schedule});
+    this.journeyService.pushJourney({name: this.name, markdown: this.schedule});
   }
 
   showPreview() {

@@ -20,16 +20,8 @@ export class JourneyService {
   }
 
   pushJourney(journey: Journey) {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        "Content-Type": "application/x-www-form-urlencoded",
-        "WWW-Authenticate": "Basic",
-        "X-CSRFToken": this.cookieService.get('csrftoken')
-      }),
-      withCredentials: true
-    };
-    this.http.post(this.NEW_JOURNEY_URL, {"token": this.authService.getToken(), ...journey}, httpOptions).subscribe(() => {
-      console.log("got a response");
+    this.http.post(this.NEW_JOURNEY_URL, journey).subscribe((response) => {
+      console.log(response);
     });
   }
 

@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, re_path, include
 from django.views.generic import TemplateView
+from django.contrib.auth.views import LoginView
 from django.views.decorators.csrf import ensure_csrf_cookie
 from backend import urls as backendurls
 
