@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { JourneyService } from '../journey.service';
-import { JourneysResponse } from '../response-types';
+import { JourneysResponse, JourneyManifestResponse } from '../response-types';
 
 @Component({
   selector: 'app-home',
@@ -9,12 +9,12 @@ import { JourneysResponse } from '../response-types';
 })
 export class HomeComponent implements OnInit {
 
-  private journeys: JourneysResponse;
+  private journeys: JourneyManifestResponse;
 
   constructor(private journeyService: JourneyService) { }
 
   ngOnInit() {
-    this.journeyService.getJourneys().subscribe((journeysRes: JourneysResponse) => {
+    this.journeyService.getJourneys().subscribe((journeysRes: JourneyManifestResponse) => {
       console.log(journeysRes);
       this.journeys = journeysRes;
     })

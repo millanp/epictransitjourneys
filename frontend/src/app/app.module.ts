@@ -14,6 +14,7 @@ import { MyAccountComponent } from './my-account/my-account.component';
 import { CookieService } from "ngx-cookie-service";
 import { NewJourneyComponent } from './new-journey/new-journey.component';
 import { httpInterceptorProviders } from './http-interceptors';
+import { JourneyDetailComponent } from './journey-detail/journey-detail.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { httpInterceptorProviders } from './http-interceptors';
     LoginComponent,
     MyAccountComponent,
     NewJourneyComponent,
+    JourneyDetailComponent,
   ],
   imports: [
     BrowserModule,

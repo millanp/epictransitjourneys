@@ -6,6 +6,18 @@ export interface AuthResponse {
     scope: string;
 }
 
+export interface JourneyManifest {
+    name: string;
+    first_published: Date;
+    last_updated: Date;
+    written_by: string;
+    pk: number;
+}
+
+export interface JourneyManifestResponse {
+    [index: number]: JourneyManifest
+}
+
 export interface JourneysResponse {
     [index: number]: Journey;
 }
