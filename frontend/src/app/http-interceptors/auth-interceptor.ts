@@ -21,10 +21,14 @@ export class AuthInterceptor implements HttpInterceptor {
             "Content-Type": "application/json",
             "X-CSRFToken": this.cookieService.get('csrftoken'),
         }
-        if (!req.headers.get("Authorization") && this.authService.loggedIn()) {
-            newHeaders["Authorization"] = "Bearer " + await this.authService.getToken().toPromise();
+        if (!req.headers.get("Authorization")) {
+            if (this.authService.loggedIn()) {
+                newHeaders["Authorization"] = "Bearer " + await this.authService.getToken().toPromise();
+            } else {
+                // newHeaders["Authorization"] = "Basic/" // TODO add interceptor to add client id when not logged in
+            }
         }
-        const authReq = req.clone({setHeaders: newHeaders});
+        const authReq = req.clone({ setHeaders: newHeaders });
         // add client id header regardless
         return next.handle(authReq).toPromise();
     }

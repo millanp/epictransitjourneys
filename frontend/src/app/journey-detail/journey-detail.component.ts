@@ -21,11 +21,11 @@ export class JourneyDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // this.journey$ = this.route.paramMap.pipe(
-    //   switchMap((params: ParamMap) => {
-    //     return this.service.getJourney(params.get('id'));
-    //   })
-    // );
+    this.journey$ = this.route.paramMap.pipe(
+      switchMap((params: ParamMap) => {
+        return this.service.getJourney(parseInt(params.get('id')));
+      })
+    );
   }
 
 
