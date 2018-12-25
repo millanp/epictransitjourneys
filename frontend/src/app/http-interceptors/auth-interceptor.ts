@@ -25,7 +25,8 @@ export class AuthInterceptor implements HttpInterceptor {
             if (this.authService.loggedIn()) {
                 newHeaders["Authorization"] = "Bearer " + await this.authService.getToken().toPromise();
             } else {
-                // newHeaders["Authorization"] = "Basic/" // TODO add interceptor to add client id when not logged in
+                console.log('adding basic');
+                newHeaders["Authorization"] = "Basic " + btoa(this.authService.CLIENT_ID + ":");
             }
         }
         const authReq = req.clone({ setHeaders: newHeaders });

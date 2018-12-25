@@ -1,4 +1,4 @@
-<div id="schedule-preview" [innerHTML]="markdownPreview">
+<div id="schedule-preview" *ngIf="displayPreview" [innerHTML]="schedule | mdToHtml">
 
 </div>
 <div class="panel panel-default">
@@ -17,4 +17,3 @@
     <button type="button" (click)="showPreview()" class="btn btn-info">Preview</button>
   </form>
 </div>
-  

@@ -20,6 +20,7 @@ class JourneyCreate(generics.CreateAPIView):
 
 class JourneyDetail(generics.RetrieveAPIView):
     queryset = Journey.objects.all()
+    permission_classes = []
     # automatically uses lookup field of pk
     serializer_class = JourneySerializer
 

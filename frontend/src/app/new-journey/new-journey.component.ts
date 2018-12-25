@@ -10,9 +10,10 @@ import { JourneyService } from '../journey.service';
 })
 export class NewJourneyComponent implements OnInit {
 
-  private name: string;
-  private schedule: string;
-  private markdownPreview: string = "";
+  public name: string;
+  public schedule: string;
+  public markdownPreview: string = "";
+  public displayPreview: boolean = false;
 
   constructor(private router: Router, private journeyService: JourneyService) { }
 
@@ -26,7 +27,7 @@ export class NewJourneyComponent implements OnInit {
   }
 
   showPreview() {
-    this.markdownPreview = (new Converter({tables: true})).makeHtml(this.schedule);
+    this.displayPreview = true;
   }
 
 }

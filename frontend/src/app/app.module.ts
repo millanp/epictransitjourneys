@@ -15,6 +15,7 @@ import { CookieService } from "ngx-cookie-service";
 import { NewJourneyComponent } from './new-journey/new-journey.component';
 import { httpInterceptorProviders } from './http-interceptors';
 import { JourneyDetailComponent } from './journey-detail/journey-detail.component';
+import { MdToHtmlPipe } from './md-to-html.pipe';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { JourneyDetailComponent } from './journey-detail/journey-detail.componen
     MyAccountComponent,
     NewJourneyComponent,
     JourneyDetailComponent,
+    MdToHtmlPipe,
   ],
   imports: [
     BrowserModule,
