@@ -1,3 +1,16 @@
 .navbar {
     margin-bottom: 0 !important;
 }
+
+.container-fluid {
+    padding-left: 0;
+    
+    #myNavbar {
+        padding-left: 0;
+    }
+}
+
+nav {
+    background-color: #f1f1f1;
+    border-radius: 0;
+}

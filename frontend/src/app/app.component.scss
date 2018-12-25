@@ -42,6 +42,12 @@ footer {
     padding: 15px;
 }
 
+
+.pagetitle {
+    white-space: nowrap;
+    padding-right: 20px;
+}
+
 /* On small screens, set height to 'auto' for sidenav and grid */
 
 @media screen and (max-width: 767px) {

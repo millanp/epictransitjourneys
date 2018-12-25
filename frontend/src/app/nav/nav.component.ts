@@ -11,7 +11,7 @@ export class NavComponent implements OnInit {
 
   @Input() routes: NavRoutes;
 
-  constructor(private authService: AuthenticationService) { }
+  constructor(public authService: AuthenticationService) { }
 
   ngOnInit() {
   }

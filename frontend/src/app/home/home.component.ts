@@ -9,7 +9,7 @@ import { JourneysResponse, JourneyManifestResponse } from '../response-types';
 })
 export class HomeComponent implements OnInit {
 
-  private journeys: JourneyManifestResponse;
+  public journeys: JourneyManifestResponse;
 
   constructor(private journeyService: JourneyService) { }
 
