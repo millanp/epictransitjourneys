@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li *ngFor="let route of routes" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <li *ngFor="let route of routes">
           <a [routerLink]='[route.path]'>
             {{route.data.navName}}
           </a>
@@ -14,7 +14,7 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-          <li *ngIf="authService.loggedIn()" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <li *ngIf="authService.loggedIn()">
               <a routerLink='/my-account'>
                 My Account
               </a>
