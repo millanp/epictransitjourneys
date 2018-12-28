@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Converter } from 'showdown';
-import { JourneyService } from '../journey.service';
+import { JourneyService } from '../../journey.service';
+import { Journey } from '../../response-types';
+import { routerNgProbeToken } from '@angular/router/src/router_module';
 
 @Component({
   selector: 'app-new-journey',
@@ -20,14 +22,21 @@ export class NewJourneyComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmit() {
-    // submit however i will
-    console.log("submitting");
-    this.journeyService.pushJourney({name: this.name, markdown: this.schedule});
-  }
+  // onSubmit() {
+  //   // submit however i will
+  //   console.log("submitting");
+  //   this.journeyService.pushJourney({name: this.name, markdown: this.schedule});
+  // }
 
   showPreview() {
     this.displayPreview = true;
+  }
+
+  onJourneyReceived(journey: Journey) {
+    console.log(journey);
+    this.journeyService.pushJourney(journey).subscribe((response: Journey) => {
+      this.router.navigate(['/']); // TODO: make this go to the actual post
+    });
   }
 
 }

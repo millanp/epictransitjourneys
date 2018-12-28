@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
-import { JourneyService } from '../journey.service';
+import { JourneyService } from '../../journey.service';
 import { switchMap } from 'rxjs/operators';
-import { Journey } from '../response-types';
+import { Journey } from '../../response-types';
 import { Observable } from 'rxjs';
+import { AuthenticationService } from '../../authentication.service';
 
 @Component({
   selector: 'app-journey-detail',
@@ -16,8 +17,8 @@ export class JourneyDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
-    private service: JourneyService
+    private service: JourneyService,
+    public authService: AuthenticationService
   ) { }
 
   ngOnInit() {

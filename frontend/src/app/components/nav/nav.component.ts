@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { NavRoutes } from '../nav-routes';
-import { AuthenticationService } from '../authentication.service';
+import { NavRoutes } from '../../nav-routes';
+import { AuthenticationService } from '../../authentication.service';
 
 @Component({
   selector: 'app-nav',

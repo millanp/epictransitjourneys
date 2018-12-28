@@ -24,10 +24,8 @@ export class JourneyService {
     return this.http.get<Journey>(this.JOURNEY_DETAIL_URL_STEM + id + "/"); // TODO: find a better way to do this string concat
   }
 
-  pushJourney(journey: Journey) {
-    this.http.post(this.NEW_JOURNEY_URL, journey).subscribe((response) => {
-      console.log(response);
-    });
+  pushJourney(journey: Journey): Observable<Journey> {
+    return this.http.post<Journey>(this.NEW_JOURNEY_URL, journey);
   }
 
 }

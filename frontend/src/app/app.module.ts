@@ -4,18 +4,19 @@ import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './components/home/home.component';
 import { AppRoutingModule } from './/app-routing.module';
-import { NavComponent } from './nav/nav.component';
-import { JourneyListComponent } from './journey-list/journey-list.component';
-import { LoginComponent } from './login/login.component';
-import { MyAccountComponent } from './my-account/my-account.component';
+import { NavComponent } from './components/nav/nav.component';
+import { JourneyListComponent } from './components/journey-list/journey-list.component';
+import { LoginComponent } from './components/login/login.component';
+import { MyAccountComponent } from './components/my-account/my-account.component';
 
 import { CookieService } from "ngx-cookie-service";
-import { NewJourneyComponent } from './new-journey/new-journey.component';
+import { NewJourneyComponent } from './components/new-journey/new-journey.component';
 import { httpInterceptorProviders } from './http-interceptors';
-import { JourneyDetailComponent } from './journey-detail/journey-detail.component';
+import { JourneyDetailComponent } from './components/journey-detail/journey-detail.component';
 import { MdToHtmlPipe } from './md-to-html.pipe';
+import { JourneyEditorComponent } from './components/journey-editor/journey-editor.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { MdToHtmlPipe } from './md-to-html.pipe';
     NewJourneyComponent,
     JourneyDetailComponent,
     MdToHtmlPipe,
+    JourneyEditorComponent,
   ],
   imports: [
     BrowserModule,
