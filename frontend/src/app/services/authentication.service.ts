@@ -62,7 +62,6 @@ export class AuthenticationService {
 
   getToken(): Observable<string> {
     // TODO: make this more comprehensive
-    console.log('called');
     if (this.expiresAt > moment().valueOf()) {
       return of(localStorage.getItem("access_token"));
     }

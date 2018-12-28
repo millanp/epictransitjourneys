@@ -9,12 +9,12 @@ import { JourneyDetailComponent } from './components/journey-detail/journey-deta
 import { JourneyEditorPageComponent } from './components/journey-editor-page/journey-editor-page.component';
 
 export const routes: Routes = [
-  {path: '', component: HomeComponent, pathMatch: 'full', data: {navName: "Home"}},
-  {path: 'journeys/:id', component: JourneyDetailComponent},
-  {path: 'journeys/:id/edit', component: JourneyEditorPageComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'my-account', component: MyAccountComponent, canActivate: [AuthGuard] },
-  {path: 'new-journey', component: NewJourneyComponent, canActivate: [AuthGuard]}
+  { path: '', component: HomeComponent, pathMatch: 'full', data: { navName: "Home" } },
+  { path: 'journeys/:id', component: JourneyDetailComponent },
+  { path: 'journeys/:id/edit', component: JourneyEditorPageComponent, canActivate: [AuthGuard] },
+  { path: 'login', component: LoginComponent },
+  { path: 'my-account', component: MyAccountComponent, canActivate: [AuthGuard] },
+  { path: 'new-journey', component: NewJourneyComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

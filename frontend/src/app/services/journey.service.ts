@@ -18,6 +18,10 @@ export class JourneyService {
     return `/api/journeys/${pk}/update/`;
   }
 
+  private getDeleteUrl(pk: number): string {
+    return `/api/journeys/${pk}/delete/`;
+  }
+
   constructor(private http: HttpClient, private cookieService: CookieService, private authService: AuthenticationService) { }
 
   getJourneys(): Observable<JourneyManifestResponse> {
@@ -34,6 +38,10 @@ export class JourneyService {
 
   updateJourney(journey: JourneyWithPk): Observable<Journey> {
     return this.http.put<Journey>(this.getUpdateUrl(journey.pk), journey);
+  }
+
+  deleteJourney(journey: JourneyManifest): Observable<any> {
+    return this.http.delete(this.getDeleteUrl(journey.pk));
   }
 
 }

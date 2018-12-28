@@ -38,6 +38,11 @@ class JourneyUpdate(generics.UpdateAPIView):
     permission_classes = [TokenHasReadWriteScope]
     serializer_class = JourneySerializer
 
+class JourneyDelete(generics.DestroyAPIView):
+    queryset = Journey.objects.all()
+    permission_classes = [TokenHasReadWriteScope]
+    # serializer_class = JourneyListSerializer
+
 # clid: pvgEWnLsB1GGP0qAvIPN2OrkamQUKj5h16UH8iXp
 # cls: 0MdkdrR0H05jMkm6FAxjOiu04FX6fBd2VQ094RnoRRiFDaf7SNVGugyZUoiSgWtdj3FA6nALPZCsf8PwsiIZ4kZcCEPQ1JKiou3ZLyOZjLDRPeM0HUTXyouCNtXuvrtH
 # tok: Vhw6laWgYyfm6O1sGK2AoDy3UvzJ2K
