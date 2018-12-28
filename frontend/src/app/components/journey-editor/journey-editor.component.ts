@@ -17,6 +17,7 @@ export class JourneyEditorComponent implements OnInit {
   public displayPreview: boolean = false;
 
   ngOnInit() {
+    
   }
 
   onSubmit() {

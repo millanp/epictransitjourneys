@@ -26,3 +26,7 @@ export interface Journey {
     name: string;
     markdown: string;
 }
+
+export interface JourneyWithPk extends Journey {
+    pk: number;
+}

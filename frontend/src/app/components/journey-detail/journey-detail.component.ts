@@ -29,8 +29,4 @@ export class JourneyDetailComponent implements OnInit {
     );
   }
 
-  onJourneyReceived(journey: Journey) {
-
-  }
-
 }

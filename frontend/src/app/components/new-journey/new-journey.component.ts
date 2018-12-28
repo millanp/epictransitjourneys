@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Converter } from 'showdown';
 import { JourneyService } from '../../services/journey.service';
-import { Journey, JourneyManifest } from '../../response-types';
+import { Journey, JourneyManifest, JourneyWithPk } from '../../response-types';
 import { routerNgProbeToken } from '@angular/router/src/router_module';
 
 @Component({
@@ -34,7 +34,7 @@ export class NewJourneyComponent implements OnInit {
 
   onJourneyReceived(journey: Journey) {
     console.log(journey);
-    this.journeyService.pushJourney(journey).subscribe((response: JourneyManifest) => {
+    this.journeyService.pushJourney(journey).subscribe((response: JourneyWithPk) => {
       console.log(response);
       this.router.navigate(['/journeys', response.pk]);
     });
