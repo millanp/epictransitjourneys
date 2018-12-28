@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Journey, JourneyManifestResponse } from '../response-types';
+import { Journey, JourneyManifestResponse, JourneyManifest } from '../response-types';
 import { Observable } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 import { AuthenticationService } from './authentication.service';
@@ -24,8 +24,8 @@ export class JourneyService {
     return this.http.get<Journey>(this.JOURNEY_DETAIL_URL_STEM + id + "/"); // TODO: find a better way to do this string concat
   }
 
-  pushJourney(journey: Journey): Observable<Journey> {
-    return this.http.post<Journey>(this.NEW_JOURNEY_URL, journey);
+  pushJourney(journey: Journey): Observable<JourneyManifest> {
+    return this.http.post<JourneyManifest>(this.NEW_JOURNEY_URL, journey);
   }
 
 }

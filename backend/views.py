@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import Journey, JourneySerializer, JourneyListSerializer
 
 from rest_framework import generics, permissions, serializers
+from rest_framework.response import Response
 
 from oauth2_provider.contrib.rest_framework import TokenHasReadWriteScope
 
@@ -17,6 +18,14 @@ class JourneyCreate(generics.CreateAPIView):
 
     def perform_create(self, serializer):
         serializer.save(written_by=self.request.user)
+
+    # def create(self, request, *args, **kwargs):
+    #     write_serializer = self.serializer_class(data=request.data)
+    #     write_serializer.is_valid(raise_exception=True)
+    #     instance = self.perform_create(write_serializer)
+    #     print(instance)
+    #     read_serializer = JourneyListSerializer(instance)
+    #     return Response(read_serializer.data)
 
 class JourneyDetail(generics.RetrieveAPIView):
     queryset = Journey.objects.all()
