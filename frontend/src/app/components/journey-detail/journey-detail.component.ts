@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
-import { JourneyService } from '../../journey.service';
+import { JourneyService } from '../../services/journey.service';
 import { switchMap } from 'rxjs/operators';
 import { Journey } from '../../response-types';
 import { Observable } from 'rxjs';
-import { AuthenticationService } from '../../authentication.service';
+import { AuthenticationService } from '../../services/authentication.service';
 
 @Component({
   selector: 'app-journey-detail',

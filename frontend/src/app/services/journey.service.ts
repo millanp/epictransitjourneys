@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Journey, JourneyManifestResponse } from './response-types';
+import { Journey, JourneyManifestResponse } from '../response-types';
 import { Observable } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 import { AuthenticationService } from './authentication.service';

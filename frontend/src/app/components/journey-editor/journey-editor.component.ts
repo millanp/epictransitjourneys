@@ -1,6 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
-import { JourneyService } from '../../journey.service';
 import { Journey } from '../../response-types';
 
 @Component({

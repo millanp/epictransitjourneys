@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Converter } from 'showdown';
-import { JourneyService } from '../../journey.service';
+import { JourneyService } from '../../services/journey.service';
 import { Journey } from '../../response-types';
 import { routerNgProbeToken } from '@angular/router/src/router_module';
 

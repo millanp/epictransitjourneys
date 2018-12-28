@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Observable, of } from "rxjs";
 import { map } from "rxjs/operators";
 import * as moment from "moment";
-import { AuthResponse } from "./response-types";
+import { AuthResponse } from "../response-types";
 import { CookieService } from "ngx-cookie-service";
 import { Router } from "@angular/router";
 

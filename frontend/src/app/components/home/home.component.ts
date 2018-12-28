@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { JourneyService } from '../../journey.service';
+import { JourneyService } from '../../services/journey.service';
 import { JourneysResponse, JourneyManifestResponse } from '../../response-types';
 
 @Component({
