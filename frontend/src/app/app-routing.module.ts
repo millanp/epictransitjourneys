@@ -7,11 +7,13 @@ import { MyAccountComponent } from './components/my-account/my-account.component
 import { AuthGuard } from './services/auth-guard.service';
 import { NewJourneyComponent } from './components/new-journey/new-journey.component';
 import { JourneyDetailComponent } from './components/journey-detail/journey-detail.component';
+import { JourneyEditorPageComponent } from './components/journey-editor-page/journey-editor-page.component';
 
 export const routes: Routes = [
   {path: '', component: HomeComponent, pathMatch: 'full', data: {navName: "Home"}},
   {path: 'journeys', component: JourneyListComponent, data: {navName: "Journey List"}},
   {path: 'journeys/:id', component: JourneyDetailComponent},
+  {path: 'journeys/:id/edit', component: JourneyEditorPageComponent},
   {path: 'login', component: LoginComponent},
   {path: 'my-account', component: MyAccountComponent, canActivate: [AuthGuard] },
   {path: 'new-journey', component: NewJourneyComponent, canActivate: [AuthGuard]}

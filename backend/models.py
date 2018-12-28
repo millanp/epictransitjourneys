@@ -41,7 +41,7 @@ class Journey(models.Model):
 class JourneySerializer(serializers.ModelSerializer):
     class Meta:
         model = Journey
-        fields = ('name', 'markdown')
+        fields = ('name', 'markdown', 'pk') # pk is ignored in the inbound direction
 
 class JourneyListSerializer(serializers.ModelSerializer):
     written_by = serializers.StringRelatedField(many=False)

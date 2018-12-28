@@ -17,6 +17,7 @@ import { httpInterceptorProviders } from './http-interceptors';
 import { JourneyDetailComponent } from './components/journey-detail/journey-detail.component';
 import { MdToHtmlPipe } from './md-to-html.pipe';
 import { JourneyEditorComponent } from './components/journey-editor/journey-editor.component';
+import { JourneyEditorPageComponent } from './components/journey-editor-page/journey-editor-page.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { JourneyEditorComponent } from './components/journey-editor/journey-edit
     JourneyDetailComponent,
     MdToHtmlPipe,
     JourneyEditorComponent,
+    JourneyEditorPageComponent,
   ],
   imports: [
     BrowserModule,
