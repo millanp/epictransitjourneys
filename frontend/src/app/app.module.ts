@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { NavComponent } from './components/nav/nav.component';
-import { JourneyListComponent } from './components/journey-list/journey-list.component';
 import { LoginComponent } from './components/login/login.component';
 import { MyAccountComponent } from './components/my-account/my-account.component';
 
@@ -24,7 +23,6 @@ import { JourneyEditorPageComponent } from './components/journey-editor-page/jou
     AppComponent,
     HomeComponent,
     NavComponent,
-    JourneyListComponent,
     LoginComponent,
     MyAccountComponent,
     NewJourneyComponent,

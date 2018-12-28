@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from "@angular/router";
 import { HomeComponent } from "./components/home/home.component";
-import { JourneyListComponent } from './components/journey-list/journey-list.component';
 import { LoginComponent } from './components/login/login.component';
 import { MyAccountComponent } from './components/my-account/my-account.component';
 import { AuthGuard } from './services/auth-guard.service';
@@ -11,7 +10,6 @@ import { JourneyEditorPageComponent } from './components/journey-editor-page/jou
 
 export const routes: Routes = [
   {path: '', component: HomeComponent, pathMatch: 'full', data: {navName: "Home"}},
-  {path: 'journeys', component: JourneyListComponent, data: {navName: "Journey List"}},
   {path: 'journeys/:id', component: JourneyDetailComponent},
   {path: 'journeys/:id/edit', component: JourneyEditorPageComponent},
   {path: 'login', component: LoginComponent},

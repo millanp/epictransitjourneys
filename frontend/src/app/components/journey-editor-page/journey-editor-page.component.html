@@ -1,1 +1,1 @@
-<app-journey-editor (journey)="onJourneyReceived($event)" [name]="journey.name" [schedule]="journey.markdown"></app-journey-editor>
+<app-journey-editor (journey)="onJourneyReceived($event)" [name]="journey ? journey.name : ''" [schedule]="journey ? journey.markdown : ''"></app-journey-editor>

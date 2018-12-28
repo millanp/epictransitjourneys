@@ -14,7 +14,6 @@ import { AuthenticationService } from '../../services/authentication.service';
 export class JourneyDetailComponent implements OnInit {
   journey$: Observable<Journey>;
   tableHTML: string;
-  editing: boolean = false;
 
   constructor(
     private route: ActivatedRoute,

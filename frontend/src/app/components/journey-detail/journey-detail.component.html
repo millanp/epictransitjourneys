@@ -1,9 +1,6 @@
 <div *ngIf="journey$ | async as journey">
     <h1>{{ journey.name }}</h1>
     <a class="edit" routerLink="edit" *ngIf="this.authService.loggedIn()">[Edit]</a>
-    <p [innerHTML]="journey.markdown | mdToHtml">
+    <p [innerHTML]="journey.markdown | mdToHtml" class="schedule">
     </p>
 </div>
-
-<app-journey-editor *ngIf="editing" (journey)="onJourneyReceived($event)">
-</app-journey-editor>
