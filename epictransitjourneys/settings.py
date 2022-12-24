@@ -21,6 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY will be set by heroku_config at the end of the file
+SECRET_KEY = "Secret"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -139,12 +140,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-# STATIC_URL = '/b/' # NOTE: This is set by django_heroku. If I want to set this to '/', i'll need to override it.
+STATIC_URL = '/b/' # NOTE: This is set by django_heroku. If I want to set this to '/', i'll need to override it.
+STATIC_ROOT = 'staticfiles/'
 
 STATICFILES_DIRS = [
     os.path.join(ANGULAR_APP_DIR)
 ]
 
 # Configure Django App for Heroku
-import django_heroku
-django_heroku.settings(locals())
+# import django_heroku
+# django_heroku.settings(locals())
