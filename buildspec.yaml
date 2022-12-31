@@ -12,9 +12,8 @@ phases:
       - npm install
   build:
     commands:
-      - pipenv run python manage.py collectstatic --no-input
-      - cd frontend
       - npm run build-with-static
+      - pipenv run python manage.py collectstatic --no-input
 artifacts:
   files:
     - "**/*"
