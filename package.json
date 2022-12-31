@@ -1,7 +1,6 @@
 {
   "name": "epictransitjourneys",
   "version": "0.0.0",
-  "engines":{"node": "8.x" },
   "scripts": {
     "postinstall": "cd frontend && npm install"
   },
