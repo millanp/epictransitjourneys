@@ -9,11 +9,10 @@ phases:
     commands:
       - echo installing dependencies...
       - pipenv install
-      - pipenv shell
       - npm install
   build:
     commands:
-      - python manage.py collectstatic --no-input
+      - pipenv run python manage.py collectstatic --no-input
       - cd frontend
       - npm run build-with-static
 artifacts:
