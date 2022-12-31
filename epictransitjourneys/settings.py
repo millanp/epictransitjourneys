@@ -26,7 +26,7 @@ SECRET_KEY = "Secret"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [] # This will be set by heroku_config at the end of the file
+ALLOWED_HOSTS = ["epictransitjourneys.eba-mmm9bqsd.us-west-2.elasticbeanstalk.com"]
 
 OAUTH2_PROVIDER = {
     # this is the list of available scopes
