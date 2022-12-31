@@ -26,7 +26,7 @@ SECRET_KEY = "Secret"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["epictransitjourneys.eba-mmm9bqsd.us-west-2.elasticbeanstalk.com"]
+ALLOWED_HOSTS = ["localhost","epictransitjourneys.eba-mmm9bqsd.us-west-2.elasticbeanstalk.com"]
 
 OAUTH2_PROVIDER = {
     # this is the list of available scopes
