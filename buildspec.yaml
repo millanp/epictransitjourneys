@@ -8,9 +8,11 @@ phases:
     commands:
       - echo installing dependencies...
       - npm install
+      - pipenv install
   build:
     commands:
       - npm run build-with-static
+      - pipenv run python manage.py collectstatic --noinput
 artifacts:
   files:
     - "**/*"
