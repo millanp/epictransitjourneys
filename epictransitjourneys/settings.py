@@ -21,7 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY will be set by heroku_config at the end of the file
-SECRET_KEY = "Secret"
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -100,7 +100,14 @@ WSGI_APPLICATION = 'epictransitjourneys.wsgi.application'
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
 DATABASES = {
-    # This is set at the end of the file by django_heroku
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ['DB_NAME'],
+        'USER': os.environ['DB_USER'],
+        'PASSWORD': os.environ['DB_PASSWORD'],
+        'HOST': os.environ['DB_HOST'],
+        'PORT': os.environ['DB_PORT']
+    }
 }
 
 
@@ -140,7 +147,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-STATIC_URL = '/static/' # NOTE: This is set by django_heroku. If I want to set this to '/', i'll need to override it.
+STATIC_URL = '/static/' # NOTE: The static file server is defined in .ebextensions/packages.config. Not handled by Django.
 STATIC_ROOT = 'staticfiles/'
 
 STATICFILES_DIRS = [
