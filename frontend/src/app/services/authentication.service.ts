@@ -16,7 +16,7 @@ export class AuthenticationService {
   private LOGIN_URL: string = "/o/token/";
   private LOGOUT_URL: string = "/o/revoke_token/";
 
-  public CLIENT_ID: string = "pvgEWnLsB1GGP0qAvIPN2OrkamQUKj5h16UH8iXp"; // Not secret
+  public CLIENT_ID: string = "SE7jBzSRZYPbJ4im65j4pZen0HpE1qdtSiRrV4dD"; // Not secret
 
   private accessToken: string;
   private refreshToken: string;
