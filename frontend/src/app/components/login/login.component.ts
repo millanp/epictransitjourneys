@@ -21,9 +21,17 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     let loginPromise: Observable<AuthResponse> = this.authService.login(this.username, this.password);
-    loginPromise.subscribe(() => {
-      this.router.navigate(['my-account']);
-    });
+    loginPromise.subscribe(
+      (response) => {
+        this.router.navigate(['my-account']);
+      },
+      (error) => {
+        this.displayLoginError();
+      }
+    );
   }
 
+  displayLoginError() {
+    console.log('hello');
+  }
 }
