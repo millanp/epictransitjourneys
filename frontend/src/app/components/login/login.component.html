@@ -1,12 +1,12 @@
 <div class="panel panel-default">
   <form class="panel-body needs-validation" #loginForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
     <div class="form-group">
-      <label for="username">Username</label>
+      <label class="control-label" for="username">Username</label>
       <input [(ngModel)]="username" type="text" class="form-control" name="username" required>
     </div>
   
     <div class="form-group">
-      <label for="password">Password</label>
+      <label class="control-label" for="password">Password</label>
       <input [(ngModel)]="password" type="password" class="form-control" name="password" required>
     </div>
   
